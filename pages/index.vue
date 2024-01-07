@@ -25,36 +25,43 @@
 
 <script lang="ts" setup>
 const now = new Date()
+const maxAge = 60 * 60 * 24 * 365
 
 const fromYear = useCookie('from_year', {
   default() {
     return now.getFullYear()
   },
+  maxAge,
 })
 const fromMonth = useCookie('from_month', {
   default() {
     return now.getMonth() + 1
   },
+  maxAge,
 })
 const fromDay = useCookie('from_day', {
   default() {
     return now.getDate()
   },
+  maxAge,
 })
 const toYear = useCookie('to_year', {
   default() {
     return now.getFullYear() + 1
   },
+  maxAge,
 })
 const toMonth = useCookie('to_month', {
   default() {
     return now.getMonth() + 1
   },
+  maxAge,
 })
 const toDay = useCookie('to_day', {
   default() {
     return now.getDate()
   },
+  maxAge,
 })
 
 const from = computed(() => new Date(fromYear.value, fromMonth.value - 1, fromDay.value))
