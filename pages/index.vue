@@ -18,7 +18,7 @@
 
     <div>
       <progress :value="progress" max="100">{{ progress }}%</progress>
-      <span>{{ progress }}%</span>
+      <span>{{ progress }}% ({{ daysLeft }} days left)</span>
     </div>
   </div>
 </template>
@@ -59,10 +59,13 @@ const toDay = useCookie('to_day', {
 
 const from = computed(() => new Date(fromYear.value, fromMonth.value - 1, fromDay.value))
 const to = computed(() => new Date(toYear.value, toMonth.value - 1, toDay.value))
+const diff = computed(() => to.value.getTime() - from.value.getTime())
 const progress = computed(() => {
-  const diff = to.value.getTime() - from.value.getTime()
   const progress = now.getTime() - from.value.getTime()
-  return Math.floor((progress / diff) * 100)
+  return Math.floor((progress / diff.value) * 100)
+})
+const daysLeft = computed(() => {
+  return Math.floor((to.value.getTime() - now.getTime()) / 1000 / 60 / 60 / 24)
 })
 </script>
 
