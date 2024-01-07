@@ -76,5 +76,9 @@ const daysLeft = computed(() => {
   flex-direction: row;
   align-items: center;
   justify-content: left;
+
+  > * {
+    max-width: 60px;
+  }
 }
 </style>
