@@ -69,7 +69,8 @@ const to = computed(() => new Date(toYear.value, toMonth.value - 1, toDay.value)
 const diff = computed(() => to.value.getTime() - from.value.getTime())
 const progress = computed(() => {
   const progress = now.getTime() - from.value.getTime()
-  return Math.floor((progress / diff.value) * 100)
+  const p = 1e3
+  return Math.floor((progress / diff.value) * 100 * p) / p
 })
 const daysLeft = computed(() => {
   return Math.floor((to.value.getTime() - now.getTime()) / 1000 / 60 / 60 / 24)
