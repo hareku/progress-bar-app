@@ -16,10 +16,12 @@
       <input id="to_day" type="number" v-model.number="toDay" />
     </div>
 
-    <div>
-      <progress :value="progress" max="100">{{ progress }}%</progress>
-      <span>{{ progress }}% ({{ daysLeft }} days left)</span>
-    </div>
+    <client-only>
+      <div>
+        <progress :value="progress" max="100">{{ progress }}%</progress>
+        <span>{{ progress }}% ({{ daysLeft }} days left)</span>
+      </div>
+    </client-only>
   </div>
 </template>
 
